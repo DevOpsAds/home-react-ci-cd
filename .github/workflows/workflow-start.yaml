@@ -16,8 +16,8 @@ jobs:
     - name: Build and push Docker image
       uses: docker/build-push-action@v3.2.0
       with:
-        context: ./src
-        file: ./src/Dockerfile
+        context: .
+        file: ./Dockerfile  # Caminho correto para o Dockerfile na raiz do projeto
         push: true
         tags: |
           ${{ secrets.DOCKER_USERNAME }}/my-home-cicd:v1
