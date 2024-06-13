@@ -1,16 +1,24 @@
-# Dockerfile
+# Define a imagem base oficial do Node.js
+FROM node:14
 
-# Base image
-FROM nginx:alpine
+# Define o diretório de trabalho dentro do container
+WORKDIR /usr/src/app
 
-# Remove the default NGINX website
-RUN rm -rf /usr/share/nginx/html/*
+# Copia os arquivos package.json e package-lock.json para o diretório de trabalho
+COPY package*.json ./
 
-# Copy the build output to the NGINX html folder
-COPY ./build /usr/share/nginx/html
+# Instala as dependências do projeto
+RUN npm install
 
-# Expose port 80
-EXPOSE 80
+# Copia todos os arquivos do projeto para o diretório de trabalho do container
+COPY . .
 
-# Start NGINX
-CMD ["nginx", "-g", "daemon off;"]
+# Exponha a porta 3000 para permitir o tráfego de entrada
+EXPOSE 3000
+
+# Adicione um comando de diagnóstico temporário para verificar o build
+RUN echo "Executando npm run build para verificar erros"
+RUN npm run build
+
+# Define o comando para iniciar a aplicação
+CMD ["node", "App.js"]
