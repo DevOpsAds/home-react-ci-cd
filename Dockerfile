@@ -7,7 +7,7 @@ FROM nginx:alpine
 RUN rm -rf /usr/share/nginx/html/*
 
 # Copy the build output to the NGINX html folder
-COPY build /usr/share/nginx/html
+COPY ./build /usr/share/nginx/html
 
 # Expose port 80
 EXPOSE 80
