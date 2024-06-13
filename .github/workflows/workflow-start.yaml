@@ -17,7 +17,7 @@ jobs:
       uses: docker/build-push-action@v3.2.0
       with:
         context: .
-        file: ./Dockerfile  # Caminho correto para o Dockerfile na raiz do projeto
+        file: ./Dockerfile
         push: true
         tags: |
           ${{ secrets.DOCKER_USERNAME }}/my-home-cicd:v1
