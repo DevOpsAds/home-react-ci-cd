@@ -30,8 +30,8 @@ jobs:
         file: ./Dockerfile
         push: true
         tags: |
-          ${{ secrets.DOCKER_USERNAME }}/my-home-cicd:v1
-          ${{ secrets.DOCKER_USERNAME }}/my-home-cicd:latest
+         joaobatistalimajunior44/my-home-cicd:v1
+         joaobatistalimajunior44/my-home-cicd:latest
 
   deploy:
     runs-on: ubuntu-latest
